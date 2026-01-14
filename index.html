@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Feliz 1er Mes ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, black, darkred);
+            color: white;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #ff4d4d;
+        }
+
+        section {
+            margin: 40px auto;
+            max-width: 700px;
+            background: rgba(0,0,0,0.65);
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 0 25px rgba(255,0,0,0.35);
+        }
+
+        .story p {
+            margin: 15px 0;
+            line-height: 1.7;
+        }
+
+        button {
+            background: #ff1a1a;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff4d4d;
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #ffd6d6;
+        }
+
+        /* Corazones */
+        .heart {
+            position: fixed;
+            top: -10px;
+            font-size: 20px;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <h1>Feliz 1er mes, mi amor ❤️</h1>
+        <h2>Para mi Berenice</h2>
+    </section>
+
+    <section class="story">
+        <h3>🌹 Nuestra Historia</h3>
+
+        <p><strong>Cómo nos conocimos:</strong><br>
+        Empezamos hablando por internet y el destino quiso que nos conociéramos
+        en persona en la calle de Huaraz. Desde ese momento, todo cambió.</p>
+
+        <p><strong>Nuestra primera cita:</strong><br>
+        Fue en la iglesia, pero la más especial fue en Carhuaz,
+        en el recreo <em>Mamá Meche</em>, donde fuimos a almorzar
+        y compartir momentos que siempre llevaré en mi corazón.</p>
+
+        <p><strong>Lo que siento por ti:</strong><br>
+        Amo todo de ti, hasta el más mínimo detalle.
+        Cada parte de ti es perfecta para mí.</p>
+    </section>
+
+    <section>
+        <h3>⏳ Nuestro tiempo juntos</h3>
+        <p id="time"></p>
+    </section>
+
+    <section>
+        <button onclick="showMessage()">Presiona aquí 💌</button>
+        <p id="message" class="hidden"></p>
+    </section>
+
+    <!-- Música -->
+    <audio id="music" loop>
+        <source src="The Reason - Hoobastank (Hardin _ Tessa) __ Traducida(720P_HD).mp4" type="video/mp4">
+        Tu navegador no soporta audio.
+    </audio>
+
+    <script>
+        // Contador
+        const startDate = new Date("2025-12-14T10:35:00");
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
+
+            const seconds = Math.floor(diff / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+
+            document.getElementById("time").innerHTML = `
+                ❤️ ${days} días <br>
+                ❤️ ${hours % 24} horas <br>
+                ❤️ ${minutes % 60} minutos <br>
+                ❤️ ${seconds % 60} segundos
+            `;
+        }
+
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // Mensaje + música
+        function showMessage() {
+            const message = document.getElementById("message");
+            const music = document.getElementById("music");
+
+            message.classList.remove("hidden");
+            message.innerHTML = `
+                Mi amor ❤️<br><br>
+                Gracias por este primer mes tan hermoso.
+                Desde que llegaste a mi vida todo tiene más sentido.
+                No prometo ser perfecto, pero sí prometo
+                amarte, cuidarte y elegirte todos los días.<br><br>
+                Esta canción suena porque me recuerda a ti 💖
+            `;
+
+            music.play();
+        }
+
+        // Corazones cayendo
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.textContent = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 5) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+
+</body>
+</html>
